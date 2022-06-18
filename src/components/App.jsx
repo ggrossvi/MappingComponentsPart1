@@ -2,12 +2,36 @@ import React from "react";
 import Card from "./Card";
 import contacts from "../contacts";
 
+// {
+//   id: 1,
+//   name: "Beyonce",
+//   imgURL:
+//     "https://blackhistorywall.files.wordpress.com/2010/02/picture-device-independent-bitmap-119.jpg",
+//   phone: "+123 456 789",
+//   email: "b@beyonce.com"
+// },  react expects a unique key must include key
+// and  u can't access it unless you create your own attribute like id below and put it in there
+
+function createCard(contact) {
+  return (
+    <Card
+      id={contact.id}
+      key={contact.id}
+      name={contact.name}
+      img={contact.imgURL}
+      tel={contact.phone}
+      email={contact.email}
+    />
+  );
+}
+
 function App() {
   return (
     <div>
       <h1 className="heading">My Contacts</h1>
+      {contacts.map(createCard)}
 
-      <Card
+      {/* <Card
         name={contacts[0].name}
         img={contacts[0].imgURL}
         tel={contacts[0].phone}
@@ -24,7 +48,7 @@ function App() {
         img={contacts[2].imgURL}
         tel={contacts[2].phone}
         email={contacts[2].email}
-      />
+      /> */}
     </div>
   );
 }
